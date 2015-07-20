@@ -104,22 +104,43 @@
         return;
     }
     
-    if ([self selectedViewController]) {
-        [[self selectedViewController] willMoveToParentViewController:nil];
-        [[[self selectedViewController] view] removeFromSuperview];
-        [[self selectedViewController] removeFromParentViewController];
+    UIViewController *old = [self selectedViewController];
+    UIViewController *new = [[self viewControllers] objectAtIndex:selectedIndex];
+    
+    if ([old isEqual:new]) {
+        [self removeViewController:old];
+        [self selectViewController:new atIndex:selectedIndex];
+        [self setNeedsStatusBarAppearanceUpdate];
+    } else {
+        [self selectViewController:new atIndex:selectedIndex];
+        [UIView transitionFromView:old.view toView:new.view duration:0.24 options:UIViewAnimationOptionTransitionCrossDissolve completion:^(BOOL finished) {
+            if (finished) {
+                [self removeViewController:old];
+                [self setNeedsStatusBarAppearanceUpdate];
+            }
+        }];
     }
+}
+
+- (void)removeViewController:(UIViewController *)vc
+{
+    if (vc) {
+        [vc willMoveToParentViewController:nil];
+        [[vc view] removeFromSuperview];
+        [vc removeFromParentViewController];
+    }
+}
+
+- (void)selectViewController:(UIViewController *)vc atIndex:(NSUInteger)index
+{
+    _selectedIndex = index;
+    [[self tabBar] setSelectedItem:[[self tabBar] items][index]];
     
-    _selectedIndex = selectedIndex;
-    [[self tabBar] setSelectedItem:[[self tabBar] items][selectedIndex]];
-    
-    [self setSelectedViewController:[[self viewControllers] objectAtIndex:selectedIndex]];
-    [self addChildViewController:[self selectedViewController]];
-    [[[self selectedViewController] view] setFrame:[[self contentView] bounds]];
-    [[self contentView] addSubview:[[self selectedViewController] view]];
-    [[self selectedViewController] didMoveToParentViewController:self];
-    
-    [self setNeedsStatusBarAppearanceUpdate];
+    [self setSelectedViewController:vc];
+    [self addChildViewController:vc];
+    [[vc view] setFrame:[[self contentView] bounds]];
+    [[self contentView] addSubview:[vc view]];
+    [vc didMoveToParentViewController:self];
 }
 
 - (void)setViewControllers:(NSArray *)viewControllers {

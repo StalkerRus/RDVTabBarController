@@ -100,9 +100,15 @@
 }
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex {
+    static BOOL firstIndexChange = YES;
+
+    if (_selectedIndex == selectedIndex && !firstIndexChange)
+        return;
     if (selectedIndex >= self.viewControllers.count) {
         return;
     }
+
+    firstIndexChange = NO;
     
     UIViewController *old = [self selectedViewController];
     UIViewController *new = [[self viewControllers] objectAtIndex:selectedIndex];

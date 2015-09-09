@@ -293,6 +293,20 @@
     }
 }
 
+- (void)setupAccessibilityLabels:(NSArray *)labels
+{
+    if (labels.count != self.tabBar.items.count) {
+        NSAssert(NO, @"Accessibility label count and tab bar item count mismatch");
+    }
+
+    for (int i = 0; i < labels.count; i++) {
+        RDVTabBarItem *item = self.tabBar.items[i];
+        [item setIsAccessibilityElement:YES];
+        [item setAccessibilityIdentifier:labels[i]];
+        [item setAccessibilityLabel:labels[i]];
+    }
+}
+
 @end
 
 #pragma mark - UIViewController+RDVTabBarControllerItem

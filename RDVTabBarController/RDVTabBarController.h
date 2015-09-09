@@ -63,6 +63,11 @@
  */
 - (void)setTabBarHidden:(BOOL)hidden animated:(BOOL)animated;
 
+/**
+ * Setups accessibility labels for existing items
+ */
+- (void)setupAccessibilityLabels:(NSArray *)labels;
+
 @end
 
 @protocol RDVTabBarControllerDelegate <NSObject>

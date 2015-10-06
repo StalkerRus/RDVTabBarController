@@ -68,6 +68,12 @@
  */
 - (void)setupAccessibilityLabels:(NSArray *)labels;
 
+/**
+ * Override this method to implement custom tab bar hiding animations
+ */
+- (void)customSetTabBarHidden:(BOOL)hidden
+                     animated:(BOOL)animated;
+
 @end
 
 @protocol RDVTabBarControllerDelegate <NSObject>

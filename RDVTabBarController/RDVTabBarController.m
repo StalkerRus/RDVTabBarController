@@ -214,19 +214,23 @@
 
 - (void)setTabBarHidden:(BOOL)hidden animated:(BOOL)animated {
     _tabBarHidden = hidden;
-    
+    [self customSetTabBarHidden:hidden animated:animated];
+}
+
+- (void)customSetTabBarHidden:(BOOL)hidden animated:(BOOL)animated
+{
     __weak RDVTabBarController *weakSelf = self;
-    
+
     void (^block)() = ^{
         CGSize viewSize = weakSelf.view.bounds.size;
         CGFloat tabBarStartingY = viewSize.height;
         CGFloat contentViewHeight = viewSize.height;
         CGFloat tabBarHeight = CGRectGetHeight([[weakSelf tabBar] frame]);
-        
+
         if (!tabBarHeight) {
             tabBarHeight = 49;
         }
-        
+
         if (!hidden) {
             tabBarStartingY = viewSize.height - tabBarHeight;
             if (![[weakSelf tabBar] isTranslucent]) {
@@ -234,17 +238,17 @@
             }
             [[weakSelf tabBar] setHidden:NO];
         }
-        
+
         [[weakSelf tabBar] setFrame:CGRectMake(0, tabBarStartingY, viewSize.width, tabBarHeight)];
         [[weakSelf contentView] setFrame:CGRectMake(0, 0, viewSize.width, contentViewHeight)];
     };
-    
+
     void (^completion)(BOOL) = ^(BOOL finished){
         if (hidden) {
             [[weakSelf tabBar] setHidden:YES];
         }
     };
-    
+
     if (animated) {
         [UIView animateWithDuration:0.24 animations:block completion:completion];
     } else {

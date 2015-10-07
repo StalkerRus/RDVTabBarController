@@ -23,10 +23,21 @@
 
 #import <UIKit/UIKit.h>
 #import "RDVTabBar.h"
+#import "RDVTabBarAnimator.h"
 
 @protocol RDVTabBarControllerDelegate;
 
 @interface RDVTabBarController : UIViewController <RDVTabBarDelegate>
+
+/**
+ * The tab bar controller’s content view.
+ */
+@property (nonatomic, strong, readonly) UIView *contentView;
+
+/**
+ * The tab bar controller’s animator object.
+ */
+@property (nonatomic, strong) RDVTabBarAnimator *animator;
 
 /**
  * The tab bar controller’s delegate object.
@@ -67,12 +78,6 @@
  * Setups accessibility labels for existing items
  */
 - (void)setupAccessibilityLabels:(NSArray *)labels;
-
-/**
- * Override this method to implement custom tab bar hiding animations
- */
-- (void)customSetTabBarHidden:(BOOL)hidden
-                     animated:(BOOL)animated;
 
 @end
 

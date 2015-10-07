@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19DCC9CC1BC516D4006547BE /* RDVTabBarAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DCC9CB1BC516D4006547BE /* RDVTabBarAnimator.m */; settings = {ASSET_TAGS = (); }; };
 		B407B65B182CCA01006F21A6 /* navigationbar_background.png in Resources */ = {isa = PBXBuildFile; fileRef = B407B659182CCA01006F21A6 /* navigationbar_background.png */; };
 		B407B65C182CCA01006F21A6 /* navigationbar_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B407B65A182CCA01006F21A6 /* navigationbar_background@2x.png */; };
 		B435F4F917396A8D00297C82 /* RDVTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B435F4F817396A8D00297C82 /* RDVTabBarItem.m */; };
@@ -52,6 +53,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19DCC9CA1BC516D4006547BE /* RDVTabBarAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVTabBarAnimator.h; sourceTree = "<group>"; };
+		19DCC9CB1BC516D4006547BE /* RDVTabBarAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVTabBarAnimator.m; sourceTree = "<group>"; };
 		B407B659182CCA01006F21A6 /* navigationbar_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigationbar_background.png; sourceTree = "<group>"; };
 		B407B65A182CCA01006F21A6 /* navigationbar_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationbar_background@2x.png"; sourceTree = "<group>"; };
 		B435F4F717396A8D00297C82 /* RDVTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVTabBarItem.h; sourceTree = "<group>"; };
@@ -188,6 +191,8 @@
 				B49817A517229BB500AD294C /* RDVTabBar.m */,
 				B49817A717229CBC00AD294C /* RDVTabBarController.h */,
 				B49817A817229CBC00AD294C /* RDVTabBarController.m */,
+				19DCC9CA1BC516D4006547BE /* RDVTabBarAnimator.h */,
+				19DCC9CB1BC516D4006547BE /* RDVTabBarAnimator.m */,
 			);
 			path = RDVTabBarController;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 				B49817A617229BB500AD294C /* RDVTabBar.m in Sources */,
 				B453D33A1A0E2219002F5656 /* RDVDetailsViewController.m in Sources */,
 				B49817A917229CBC00AD294C /* RDVTabBarController.m in Sources */,
+				19DCC9CC1BC516D4006547BE /* RDVTabBarAnimator.m in Sources */,
 				B465733A1725A23D00319236 /* RDVFirstViewController.m in Sources */,
 				B465733D1725A24700319236 /* RDVSecondViewController.m in Sources */,
 				B46573401725A25100319236 /* RDVThirdViewController.m in Sources */,
@@ -440,6 +446,7 @@
 		B4616BC917228DF700863892 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/RDVTabBarController-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Example/RDVTabBarController-Info.plist";
@@ -452,6 +459,7 @@
 		B4616BCA17228DF700863892 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/RDVTabBarController-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Example/RDVTabBarController-Info.plist";

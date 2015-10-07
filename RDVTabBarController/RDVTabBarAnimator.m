@@ -9,12 +9,6 @@
 #import "RDVTabBarAnimator.h"
 #import "RDVTabBarController.h"
 
-@interface RDVTabBarAnimator ()
-
-@property (nonatomic, weak) RDVTabBarController *controller;
-
-@end
-
 @implementation RDVTabBarAnimator
 
 - (instancetype)init
@@ -25,7 +19,7 @@
 - (instancetype)initWithController:(RDVTabBarController *)tc
 {
     if (self = [super init]) {
-        self.controller = tc;
+        _controller = tc;
     }
     return self;
 }
